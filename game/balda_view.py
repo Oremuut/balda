@@ -39,9 +39,8 @@ class GameView(QGraphicsView):
             self.cells.append(row)
 
     def mousePressEvent(self, event):
-        scene_pos = self.mapToScene(event.pos())
-        x = int(scene_pos.x() // 100)
-        y = int(scene_pos.y() // 100)
+        x = int(event.x() // 100)
+        y = int(event.y() // 100)
 
         if 0 <= x < 5 and 0 <= y < 5:
             if self.model.board[y][x] == "":
@@ -55,9 +54,8 @@ class GameView(QGraphicsView):
         if not self.is_dragging:
             return
 
-        scene_pos = self.mapToScene(event.pos())
-        x = int(scene_pos.x() // 100)
-        y = int(scene_pos.y() // 100)
+        x = int(event.x() // 100)
+        y = int(event.y() // 100)
 
         if 0 <= x < 5 and 0 <= y < 5 and (x, y) not in self.selected_cells:
             if self.model.board[y][x] != "":
